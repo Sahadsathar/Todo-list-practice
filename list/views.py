@@ -1,8 +1,16 @@
+import django.views.generic
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Task
 from .forms import Todoforms
+from django.views.generic import ListView
 # Create your views here.
+
+class Task_listview(ListView):
+    model = Task
+    template_name = 'task_view.html'
+    context_object_name = 'obj1'
+
 def task_view(request):
     obj1=Task.objects.all()
     if request.method == 'POST':
